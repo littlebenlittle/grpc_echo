@@ -1,0 +1,31 @@
+
+version: "3"
+
+services:
+  gosrv:
+    image: "golang:1.12"
+    volumes:
+    - "./gosrv:/gosrv"
+    - "./tls:/tls"
+    working_dir: "/gosrv"
+    environment:
+    - "GOCACHE=/gosrv/tmp/gocache"
+    - "GO111MODULE=on"
+    - "PORT=50051"
+    - "CERTFILE=/tls/srv.crt"
+    - "KEYFILE=/tls/srv.key"
+    command: "sleep 86400"
+    # gocli:
+    # image: "golang:1.12"
+    # volumes:
+    # - "./gocli:/go/src/${PROJECT_ROOT}/echo"
+    # working_dir: "/goli"
+    # environment:
+    # - "GOCACHE=/gosrv/tmp/gocache"
+    # command: "sleep 86400"
+    # pycli:
+    # image: "python:3.6"
+    # volumes:
+    # - "./pycli:/pycli"
+    # working_dir: "/pycli"
+    # command: "sleep 86400"

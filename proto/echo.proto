@@ -1,0 +1,12 @@
+
+syntax = "proto3";
+package echo;
+
+message Message {
+    string content = 1;
+}
+
+service Echo {
+    rpc UnaryEcho (Message) returns (Message);
+    rpc StreamEcho (stream Message) returns (stream Message);
+}
